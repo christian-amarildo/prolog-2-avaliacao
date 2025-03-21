@@ -1,0 +1,36 @@
+Funções 
+length\2
+
+length([1,1,3], A) #Saida esperada de A=3
+
+length(L, 3) #L deve ser instanciado como uma lista de 3 valores não instanciados
+
+
+append\3
+append(?List1, ?List2, ?List1AndList2) #Concatena uma lista na outra, pode ser usado para crescer uma lista de forma não recursiva
+
+append([a,b], [c], X). #Saida esperada X = [a,b,c]
+
+
+findall\3 #Encontra e cria uma lista com todos os valores assumidos por uma variavel dado um conjunto de fatos.
+
+foo(a, b, c).
+foo(a, b, d).
+foo(b, c, e).
+foo(b, c, f).
+foo(c, c, g).
+findall(C, foo(A,B,C), L) #Valores assumidos por C nos fatos de formato foo, L = [c, d, e, f, g]
+
+
+base dinamica 
+para um fato ser dinamico, ele deve ser precidido de :-dynamic fato/aridade.
+listing(predicado) lista todos os predicados no dado formato,
+asserta(predicado) adiciona o predicado no inicio na base, assertz adiciona no final, retract(predicado) remove o predicado.
+
+para salvar base
+salvar(Predicado, Arquivo) :- tell(Arquivo),
+listing(Predicado),
+told.
+
+? salvar(predicado, ‘teste.pl’).
+%atenção, isso atualiza o arquivo de forma que ele fique APENAS COM AQUELE PREDICADO.
