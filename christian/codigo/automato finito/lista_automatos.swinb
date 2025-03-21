@@ -1,0 +1,187 @@
+<div class="notebook">
+
+<div class="nb-cell program" name="p1">
+% Questão 1
+p(q0,a,q1).
+p(q1,a,q1).
+p(q1,b,q1).
+p(q1,b,q2).
+
+inicio(q0).
+final(q2).
+
+teste(X) :- string_chars(X, Fita),
+ 			inicio(No),
+ 			reconhecedor(No, Fita), !.
+
+reconhecedor(No,[]) :- final(No), !.
+reconhecedor(De,[]) :- p(De, ε, Para),
+ 						reconhecedor(Para, []).
+
+reconhecedor(De,Fita) :- (p(De, X, Para); p(De, ε, Para)),
+ 						caminha(X, Fita, Nova_Fita),
+ 						reconhecedor(Para, Nova_Fita).
+
+caminha(H,[H | T],T).
+</div>
+
+<div class="nb-cell query" name="q1">
+teste(ababb)
+</div>
+
+<div class="nb-cell program" name="p2">
+% Questão 2
+p(q0,'1',q1).
+p(q1,'0',q1).
+p(q1,'1',q1).
+p(q1,'0',q2).
+p(q2,'0',q2).
+p(q2,'0',q3).
+
+inicio(q0).
+final(q3).
+
+teste(X) :- string_chars(X, Fita),
+ 			inicio(No),
+ 			reconhecedor(No, Fita), !.
+
+reconhecedor(No,[]) :- final(No), !.
+reconhecedor(De,[]) :- p(De, ε, Para),
+ 						reconhecedor(Para, []).
+
+reconhecedor(De,Fita) :- (p(De, X, Para); p(De, ε, Para)),
+ 						caminha(X, Fita, Nova_Fita),
+ 						reconhecedor(Para, Nova_Fita).
+
+caminha(H,[H | T],T).
+</div>
+
+<div class="nb-cell query" name="q2">
+teste('11000')
+</div>
+
+<div class="nb-cell markdown" name="md1">
+
+</div>
+
+<div class="nb-cell program" name="p3">
+% Questão 3
+p(q0,'0',q0).
+p(q0,'1',q1).
+p(q1,'0',q1).
+
+inicio(q0).
+final(q1).
+
+teste(X) :- string_chars(X, Fita),
+ 			inicio(No),
+ 			reconhecedor(No, Fita), !.
+
+reconhecedor(No,[]) :- final(No), !.
+reconhecedor(De,[]) :- p(De, ε, Para),
+ 						reconhecedor(Para, []).
+
+reconhecedor(De,Fita) :- (p(De, X, Para); p(De, ε, Para)),
+ 						caminha(X, Fita, Nova_Fita),
+ 						reconhecedor(Para, Nova_Fita).
+
+caminha(H,[H | T],T).
+</div>
+
+<div class="nb-cell query" name="q3">
+teste('010').
+</div>
+
+<div class="nb-cell program" name="p4">
+% Questão 4
+p(q0,'0',q0).
+p(q0,'1',q0).
+p(q0,'1',q1).
+p(q1,'0',q1).
+p(q1,'1',q1).
+
+inicio(q0).
+final(q1).
+
+teste(X) :- string_chars(X, Fita),
+ 			inicio(No),
+ 			reconhecedor(No, Fita), !.
+
+reconhecedor(No,[]) :- final(No), !.
+reconhecedor(De,[]) :- p(De, ε, Para),
+ 						reconhecedor(Para, []).
+
+reconhecedor(De,Fita) :- (p(De, X, Para); p(De, ε, Para)),
+ 						caminha(X, Fita, Nova_Fita),
+ 						reconhecedor(Para, Nova_Fita).
+
+caminha(H,[H | T],T).
+</div>
+
+<div class="nb-cell query" name="q4">
+teste('01010').
+</div>
+
+<div class="nb-cell program" name="p5">
+% Questão 5
+p(q0, '0', q0).
+p(q0, '1', q1).
+p(q0, ε, q1).
+p(q1, '0', q1).
+
+inicio(q0).
+final(q1).
+
+teste(X) :- string_chars(X, Fita),
+ 			inicio(No),
+ 			reconhecedor(No, Fita), !.
+
+reconhecedor(No,[]) :- final(No), !.
+reconhecedor(De,[]) :- p(De, ε, Para),
+ 						reconhecedor(Para, []).
+
+reconhecedor(De,Fita) :- (p(De, X, Para); p(De, ε, Para)),
+ 						caminha(X, Fita, Nova_Fita),
+ 						reconhecedor(Para, Nova_Fita).
+
+caminha(H,[H | T],T).
+</div>
+
+<div class="nb-cell query" name="q5">
+teste('01000100').
+</div>
+
+<div class="nb-cell program" name="p6">
+% Questão 6
+p(q0,'0',q1).
+p(q0,'1',q1).
+p(q1,'0',q2).
+p(q1,'1',q2).
+p(q2,'0',q3).
+p(q2,'1',q3).
+p(q3,'0',q3).
+p(q3,'1',q3).
+
+inicio(q0).
+final(q3).
+
+teste(X) :- string_chars(X, Fita),
+ 			inicio(No),
+ 			reconhecedor(No, Fita), !.
+
+reconhecedor(No,[]) :- final(No), !.
+reconhecedor(De,[]) :- p(De, ε, Para),
+ 						reconhecedor(Para, []).
+
+reconhecedor(De,Fita) :- (p(De, X, Para); p(De, ε, Para)),
+ 						caminha(X, Fita, Nova_Fita),
+ 						reconhecedor(Para, Nova_Fita).
+
+caminha(H,[H | T],T).
+</div>
+
+<div class="nb-cell query" name="q6">
+teste('01')
+</div>
+
+</div>
